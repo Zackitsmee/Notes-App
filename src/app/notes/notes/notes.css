@@ -1,0 +1,61 @@
+/* notes.css */
+div {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+h3 {
+  color: #555;
+}
+
+p {
+  color: #777;
+}
+
+button {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:nth-of-type(1) {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button:nth-of-type(2) {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+button:last-of-type {
+  background-color: #2196F3;
+  color: white;
+  display: block;
+  margin: 20px auto 0;
+}
+
+button:hover {
+  opacity: 0.9;
+}

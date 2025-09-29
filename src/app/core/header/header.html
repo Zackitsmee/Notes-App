@@ -1,0 +1,53 @@
+<header class="header">
+  <div class="header-content">
+    <!-- Search Area -->
+    <div class="search-area">
+     <div class="search-container">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input 
+        type="text" 
+          class="search-input" 
+          placeholder="Search notes..."
+          [(ngModel)]="searchQuery"
+          (keyup.enter)="onSearch()">
+    </div>
+  </div>
+
+  </div>
+    <!-- Add Note Area -->
+    <div class="add-note-area">
+      <button class="add-note-btn" (click)="onAddNote()">
+        <i class="fa-solid fa-plus"></i>
+        <span class="add-text">Add Note</span>
+      </button>
+    </div>
+
+    <!-- Account Area -->
+    <div class="account-area">
+      <div class="account-container">
+        <button class="account-btn" (click)="toggleAccountMenu()">
+          <div class="user-avatar">{{ userInitial }}</div>
+          <span class="user-name">Account</span>
+          <i class="dropdown-icon" [class.rotated]="showAccountMenu">▼</i>
+        </button>
+        
+        <!-- Account Dropdown Menu -->
+        <div class="account-dropdown" *ngIf="showAccountMenu">
+          <button class="dropdown-item" (click)="onProfile()">
+            <i class="fa-solid fa-user"></i>
+            Profile
+          </button>
+          <button class="dropdown-item" (click)="onSettings()">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+          </button>
+          <hr class="dropdown-divider">
+          <button class="dropdown-item" (click)="onSignOut()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  
+</header>
