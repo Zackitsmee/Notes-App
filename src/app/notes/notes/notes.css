@@ -1,6 +1,6 @@
 /* notes.css */
 div {
-  max-width: 800px;
+  max-width: 500px;
   margin: 20px auto;
   padding: 20px;
 }
@@ -15,13 +15,7 @@ ul {
   padding: 0;
 }
 
-li {
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
+
 
 h3 {
   color: #555;
@@ -31,31 +25,69 @@ p {
   color: #777;
 }
 
+/* General button styles */
+li {
+  display: flex;
+  flex-direction: column;         /* stack content + actions */
+  justify-content: space-between; /* space content & buttons */
+  min-height: 150px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.note-actions {
+  display: flex;
+  justify-content: space-between; /* edit left, delete right */
+  margin-top: 20px; 
+  width: 100%;
+  gap: 10px;              /* spacing from text */
+}
+
+/* General button styles */
 button {
-  margin-right: 10px;
-  padding: 8px 12px;
+  padding: 8px 14px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
+  
+}
+.note-actions button {
+  flex: 0.1;                       /* optional: make buttons take equal width */
 }
 
-button:nth-of-type(1) {
+.note-actions button:first-of-type {
+  margin-right: auto;             /* ensure edit stays left */
+}
+
+.note-actions button:last-of-type {
+  margin-left: auto;              /* ensure delete stays right */
+}
+/* Edit button */
+.note-actions button:first-of-type {
   background-color: #4CAF50;
   color: white;
 }
 
-button:nth-of-type(2) {
+/* Delete button */
+.note-actions button:last-of-type {
   background-color: #ff4d4d;
   color: white;
 }
 
-button:last-of-type {
+/* Create New Note button (centered at bottom outside notes) */
+div > button:last-of-type {
   background-color: #2196F3;
   color: white;
   display: block;
   margin: 20px auto 0;
 }
 
+/* Hover effect */
 button:hover {
   opacity: 0.9;
 }
+

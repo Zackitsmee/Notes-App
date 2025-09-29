@@ -5,8 +5,11 @@
     <li *ngFor="let note of notes">
       <h3>{{ note.title }}</h3>
       <p>{{ note.content }}</p>
-      <button (click)="editNote(note.id)">Edit</button>
-      <button (click)="deleteNote(note.id)">Delete</button>
+
+      <div class="note-actions">
+        <button (click)="editNote(note.id)">Edit </button>
+        <button (click)="deleteNote(note.id)">Delete</button>
+      </div>
     </li>
   </ul>
   <button (click)="createNote()">Create New Note</button>

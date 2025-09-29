@@ -1,6 +1,6 @@
 /* Header Styles - Dark Teal Background with White Navigation Bar */
 .header {
-  background: #2c7a7b;
+  background: #220b57;
   min-height: 70px;
   display: flex;
   align-items: center;
@@ -22,7 +22,11 @@
   justify-content: space-between;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
+.logo-area .logo{
+   height: 50px;       /* main control of size */
+  width: auto;        /* keep aspect ratio */
+  margin-right: 20px; /* spacing from other header content */
+}
 /* Search Area */
 .search-area {
   flex: 1;
@@ -71,7 +75,7 @@
 }
 
 .add-note-btn {
-  background: #2c7a7b;
+  background: #ffffff;
   color: rgb(0, 0, 0);
   border: none;
   border-radius: 8px;
@@ -86,7 +90,7 @@
 }
 
 .add-note-btn:hover {
-  background: #ffffff;
+  background: #9b9b9b;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(44, 122, 123, 0.3);
 }
@@ -109,7 +113,7 @@
 }
 
 .account-btn {
-  background: none;
+  background: #ffffff;
   border: none;
   cursor: pointer;
   display: flex;
@@ -121,7 +125,7 @@
 }
 
 .account-btn:hover {
-  background: #f0f0f0;
+  background: #8d8d8d;
 }
 
 .user-avatar {

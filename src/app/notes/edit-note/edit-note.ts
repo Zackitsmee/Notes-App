@@ -19,10 +19,10 @@ export class EditNote {
   onSubmit() {
     console.log('Note edited:', this.note);
     alert('Changes saved!');
-    this.router.navigate(['/notes']);  // Navigate back to notes list or adjust as needed
+    this.router.navigate(['/']);  // Navigate back to notes list or adjust as needed
   }
 
   cancel() {
-    this.router.navigate(['/notes']);
+    this.router.navigate(['/']);
   }
 }

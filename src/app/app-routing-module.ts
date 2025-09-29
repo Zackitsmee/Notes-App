@@ -9,7 +9,7 @@ const routes: Routes = [
     {path: '' , redirectTo : "/home", pathMatch: 'full' },
     {path: 'home', component: Notes},
     {path: 'createnote', component : CreateNote},
-    {path: 'editnote', component: EditNote }
+    {path: 'editnote/:id', component: EditNote }
     
 ];
 
