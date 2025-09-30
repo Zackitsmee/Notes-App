@@ -1,5 +1,7 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { Services } from '../../services/services';
+import { Note } from '../notes/note.model';
 
 @Component({
   selector: 'app-create-note',
@@ -8,17 +10,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-note.css']
 })
 export class CreateNote {
-  note = {
-    title: '',
-    content: ''
-  };
-  constructor(private router: Router) {}
+  note: Note = { id: 0, title: '', content: '' }; // use Note model
+
+  constructor(private router: Router, private services: Services) {}
 
   onSubmit() {
+    // Add the new note via the service
+    this.services.addNote(this.note);
+
     console.log('Note created:', this.note);
     alert('Note saved!');
-    // Reset after save
-    this.note = { title: '', content: '' };
+
+    // Reset form
+    this.note = { id: 0, title: '', content: '' };
+
+    // Navigate back to dashboard
     this.router.navigate(['/']);
   }
 }

@@ -1,6 +1,7 @@
-// edit-note.ts
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Services } from '../../services/services';
+import { Note } from '../notes/note.model';
 
 @Component({
   selector: 'app-edit-note',
@@ -8,18 +9,36 @@ import { Router } from '@angular/router';
   templateUrl: './edit-note.html',
   styleUrls: ['./edit-note.css']
 })
-export class EditNote {
-  note = {
-    title: '',
-    content: ''
-  };
+export class EditNote implements OnInit {
+  note: Note = { id: 0, title: '', content: '' };
+  isEditMode: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private services: Services
+  ) {}
+
+  ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id) {
+      const existingNote = this.services.getNoteById(id);
+      if (existingNote) {
+        this.note = { ...existingNote }; // copy note for editing
+        this.isEditMode = true;
+      }
+    }
+  }
 
   onSubmit() {
-    console.log('Note edited:', this.note);
+    if (this.isEditMode) {
+      this.services.updateNote(this.note); // update existing
+    } else {
+      this.services.addNote(this.note); // add new
+    }
+
     alert('Changes saved!');
-    this.router.navigate(['/']);  // Navigate back to notes list or adjust as needed
+    this.router.navigate(['/']); // back to dashboard
   }
 
   cancel() {
