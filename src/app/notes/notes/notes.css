@@ -1,4 +1,3 @@
-/* notes.css */
 div {
   max-width: 500px;
   margin: 20px auto;
@@ -8,6 +7,7 @@ div {
 h1 {
   color: #333;
   text-align: center;
+  font-family: "Lucida Handwriting", cursive;
 }
 
 ul {
@@ -15,35 +15,45 @@ ul {
   padding: 0;
 }
 
-
-
 h3 {
-  color: #555;
+  color: #222; /* darker for better contrast */
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Bradley Hand ITC, cursive;
 }
 
 p {
-  color: #777;
+  color: #444;
+  margin: 0;
+  flex-grow: 1;
+  font-family: Florence SC, cursive;
 }
 
-/* General button styles */
+/* Note card style */
 li {
   display: flex;
-  flex-direction: column;         /* stack content + actions */
-  justify-content: space-between; /* space content & buttons */
+  flex-direction: column;         
+  justify-content: space-between; 
   min-height: 150px;
   margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;                     /* smoother corners */
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.15);/* soft shadow */
+  transition: transform 0.2s ease;         /* hover animation */
+}
+
+/* Hover lift effect */
+li:hover {
+  transform: translateY(-3px);
 }
 
 .note-actions {
   display: flex;
-  justify-content: space-between; /* edit left, delete right */
+  justify-content: space-between;
   margin-top: 20px; 
   width: 100%;
-  gap: 10px;              /* spacing from text */
+  gap: 10px;
 }
 
 /* General button styles */
@@ -53,32 +63,25 @@ button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  
 }
+
 .note-actions button {
-  flex: 0.1;                       /* optional: make buttons take equal width */
+  flex: 0.1;
 }
 
 .note-actions button:first-of-type {
-  margin-right: auto;             /* ensure edit stays left */
-}
-
-.note-actions button:last-of-type {
-  margin-left: auto;              /* ensure delete stays right */
-}
-/* Edit button */
-.note-actions button:first-of-type {
+  margin-right: auto;
   background-color: #4CAF50;
   color: white;
 }
 
-/* Delete button */
 .note-actions button:last-of-type {
+  margin-left: auto;
   background-color: #ff4d4d;
   color: white;
 }
 
-/* Create New Note button (centered at bottom outside notes) */
+/* Create New Note button */
 div > button:last-of-type {
   background-color: #2196F3;
   color: white;
@@ -90,4 +93,3 @@ div > button:last-of-type {
 button:hover {
   opacity: 0.9;
 }
-

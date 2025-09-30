@@ -2,14 +2,15 @@
 <div>
   <h1>My Notes</h1>
   <ul>
-    <li *ngFor="let note of notes">
+    <li *ngFor="let note of notes; let i = index" [ngStyle]="{'background-color': colors[i % colors.length]}">
       <h3>{{ note.title }}</h3>
       <p>{{ note.content }}</p>
 
       <div class="note-actions">
-        <button (click)="editNote(note.id)">Edit </button>
+        <button (click)="editNote(note.id)">Edit</button>
         <button (click)="deleteNote(note.id)">Delete</button>
       </div>
     </li>
   </ul>
 </div>
+

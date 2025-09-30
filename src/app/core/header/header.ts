@@ -1,25 +1,26 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Services } from '../../services/services';
 
 @Component({
   selector: 'app-header',
   standalone: false,
   templateUrl: './header.html',
-  styleUrls: ['./header.css']  // fix typo from styleUrl
+  styleUrls: ['./header.css']
 })
 export class Header {
   searchQuery: string = '';
   userInitial: string = 'U';
   showAccountMenu: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private services: Services) {}
 
   onSearch() {
-    console.log('Searching for:', this.searchQuery);
+  // Instead of passing via router state, call the service
+  this.services.searchNotes(this.searchQuery);
   }
 
   onAddNote() {
-    // Navigate to your CreateNote component
     this.router.navigate(['/createnote']);
   }
 
