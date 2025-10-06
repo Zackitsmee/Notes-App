@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Services } from '../../services/services';
 
+
 @Component({
   selector: 'app-header',
   standalone: false,
@@ -15,10 +16,7 @@ export class Header {
 
   constructor(private router: Router, private services: Services) {}
 
-  onSearch() {
-  // Instead of passing via router state, call the service
-  this.services.searchNotes(this.searchQuery);
-  }
+  
 
   onAddNote() {
     this.router.navigate(['/createnote']);

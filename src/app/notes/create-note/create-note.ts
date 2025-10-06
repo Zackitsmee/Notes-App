@@ -14,17 +14,13 @@ export class CreateNote {
 
   constructor(private router: Router, private services: Services) {}
 
+ 
+
   onSubmit() {
-    // Add the new note via the service
-    this.services.addNote(this.note);
-
-    console.log('Note created:', this.note);
-    alert('Note saved!');
-
-    // Reset form
-    this.note = { id: 0, title: '', content: '' };
-
-    // Navigate back to dashboard
-    this.router.navigate(['/']);
+    if (this.note.title && this.note.content) {
+      this.services.createNotes(this.note).subscribe(() => {
+      this.router.navigate(['/home']);
+      });
+    }
   }
 }

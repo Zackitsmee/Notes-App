@@ -20,28 +20,24 @@ export class EditNote implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = +this.route.snapshot.params['id']; // get id from URL
     if (id) {
-      const existingNote = this.services.getNoteById(id);
-      if (existingNote) {
-        this.note = { ...existingNote }; // copy note for editing
-        this.isEditMode = true;
-      }
+      this.isEditMode = true;
+      this.services.getNoteById(id).subscribe((data) => {
+        this.note = data;
+      });
     }
   }
 
   onSubmit() {
-    if (this.isEditMode) {
-      this.services.updateNote(this.note); // update existing
-    } else {
-      this.services.addNote(this.note); // add new
+    if (this.note.title && this.note.content) {
+      this.services.editNotes(this.note).subscribe(() => {
+        this.router.navigate(['/home']); // redirect after saving
+      });
     }
-
-    alert('Changes saved!');
-    this.router.navigate(['/']); // back to dashboard
   }
 
   cancel() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']); // go back to notes list
   }
 }

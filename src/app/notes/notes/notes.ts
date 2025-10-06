@@ -23,24 +23,22 @@ export class Notes implements OnInit {
 
   constructor(private router: Router, private services: Services) {}
 
-  
-    ngOnInit() {
-    // Subscribe to search results
-    this.services.searchResults$.subscribe(results => {
-      this.notes = results;
+  ngOnInit() {
+    this.services.getNotes().subscribe((data: any) => {
+      this.notes = data.notes; // ✅ access the array
     });
-  }
-  
 
-  createNote() {
-    this.router.navigate(['/editnote']); // empty edit for new note
   }
 
-  editNote(id: number) {
-    this.router.navigate(['/editnote', id]); // navigate with note id
+  editNotes(id: number) {
+    this.router.navigate(['/editnote', id]);
   }
 
   deleteNote(id: number) {
-    this.notes = this.notes.filter(note => note.id !== id);
+    if (confirm("Are you sure you want to delete this note?")) {
+      this.services.deleteNotes(id).subscribe(() => {
+        this.notes = this.notes.filter(n => n.id !== id);
+      });
+    }
   }
 }

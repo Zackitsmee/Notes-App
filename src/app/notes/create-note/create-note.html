@@ -1,7 +1,7 @@
 <div class="notecreation">
   <h2>Create a Note</h2>
 
-  <form (ngSubmit)="onSubmit()" #noteForm="ngForm">
+  <form (ngSubmit)="onSubmit()">
     <!-- Title -->
     <input
       type="text"
@@ -21,8 +21,9 @@
     ></textarea>
 
     <!-- Submit -->
-    <button type="submit" [disabled]="!noteForm.valid">
-      Save Note
+    <button type="submit" class="btn-create">
+  Save Note
     </button>
+
   </form>
 </div>
